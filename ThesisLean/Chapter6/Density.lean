@@ -63,6 +63,17 @@ theorem integrable_weight (hlam : 0 < lam) (hγ : 0 < γ) (hκ : 0 < κ) (b : �
     Integrable (fun x => weight lam γ κ b x) := by
   sorry
 
+/-- **Auxiliary result, polynomial moments.** The unnormalised density has finite
+polynomial moments of every order. -/
+theorem integrable_pow_mul_weight (hlam : 0 < lam) (hγ : 0 < γ) (hκ : 0 < κ) (b : ℝ)
+    (n : ℕ) : Integrable (fun x => x ^ n * weight lam γ κ b x) := by
+  sorry
+
+/-- **Auxiliary result, absolute polynomial moments.** -/
+theorem integrable_abs_pow_mul_weight (hlam : 0 < lam) (hγ : 0 < γ) (hκ : 0 < κ) (b : ℝ)
+    (n : ℕ) : Integrable (fun x => |x| ^ n * weight lam γ κ b x) := by
+  sorry
+
 /-- The normalising integral is positive. -/
 theorem partitionFn_pos (hlam : 0 < lam) (hγ : 0 < γ) (hκ : 0 < κ) (b : ℝ) :
     0 < partitionFn lam γ κ b := by
@@ -76,6 +87,21 @@ theorem density_pos (hlam : 0 < lam) (hγ : 0 < γ) (hκ : 0 < κ) (b x : ℝ) :
 /-- **Proposition 6.3.1, normalisation.** The stationary density integrates to one. -/
 theorem integral_density (hlam : 0 < lam) (hγ : 0 < γ) (hκ : 0 < κ) (b : ℝ) :
     ∫ x, density lam γ κ b x = 1 := by
+  sorry
+
+/-- **Auxiliary result, polynomial moments.** The stationary distribution has
+finite polynomial moments of every order. -/
+theorem integrable_pow_mul_density (hlam : 0 < lam) (hγ : 0 < γ) (hκ : 0 < κ) (b : ℝ)
+    (n : ℕ) : Integrable (fun x => x ^ n * density lam γ κ b x) := by
+  sorry
+
+/-- **Auxiliary result, functions of polynomial growth.** If `h` is measurable
+and `|h x| ≤ C (1 + |x| ^ n)`, then `h` is integrable with respect to the
+stationary distribution. This covers `x⁺`, `x⁻`, `x` and `x⁺ x`. -/
+theorem integrable_mul_density_of_polyGrowth (hlam : 0 < lam) (hγ : 0 < γ) (hκ : 0 < κ)
+    (b : ℝ) {h : ℝ → ℝ} (hmeas : Measurable h) {C : ℝ} {n : ℕ}
+    (hbound : ∀ x, |h x| ≤ C * (1 + |x| ^ n)) :
+    Integrable (fun x => h x * density lam γ κ b x) := by
   sorry
 
 end ThesisLean.CostOfFairness

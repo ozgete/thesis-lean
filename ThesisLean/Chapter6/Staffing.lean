@@ -41,11 +41,18 @@ theorem targetSlack_lt_of_kappa_lt (hlam : 0 < lam) (hγ : 0 < γ) {κ₁ κ₂ 
 /-- **Proposition 6.4.1, equation (6.4.4).** If the service-rate distribution `F`
 is nondegenerate, then `b*_FSF(q) < b*_TB(q)` for every `q > 0`. Totally blind
 routing requires strictly greater capacity slack than fastest-server-first
-routing to attain the same congestion target. -/
+routing to attain the same congestion target. Here `κ_FSF = μmin = ess inf μ̃`. -/
 theorem targetSlack_FSF_lt_TB (hlam : 0 < lam) (hγ : 0 < γ) {F : Measure ℝ}
-    [IsProbabilityMeasure F] {μmin μmax : ℝ} (hF : RateBounds F μmin μmax)
+    [IsProbabilityMeasure F] {lo hi : ℝ} (hF : RateBounds F lo hi)
     (hnd : 0 < varRate F) {q : ℝ} (hq : 0 < q) :
-    targetSlack lam γ μmin q < targetSlack lam γ (kappaTB F) q := by
+    targetSlack lam γ (kappaFSF F) q < targetSlack lam γ (kappaTB F) q := by
+  sorry
+
+/-- **Proposition 6.4.1, degenerate case.** If `F` is degenerate, the two target
+slacks are equal. -/
+theorem targetSlack_FSF_eq_TB_of_degenerate {F : Measure ℝ} [IsProbabilityMeasure F]
+    {lo hi : ℝ} (hF : RateBounds F lo hi) (hd : varRate F = 0) (lam γ q : ℝ) :
+    targetSlack lam γ (kappaFSF F) q = targetSlack lam γ (kappaTB F) q := by
   sorry
 
 end ThesisLean.CostOfFairness

@@ -71,12 +71,19 @@ theorem congestion_lt_of_kappa_lt (hlam : 0 < lam) (hγ : 0 < γ) (b : ℝ) {κ�
   sorry
 
 /-- **Corollary 6.3.7, equation (6.3.41).** If the service-rate distribution `F`
-is nondegenerate, then `M_FSF(b) < M_TB(b)` for every `b`. Here `κ_FSF = μmin`
-and `κ_TB = E[μ̃²] / E[μ̃]`. -/
+is nondegenerate, then `M_FSF(b) < M_TB(b)` for every `b`. Here
+`κ_FSF = μmin = ess inf μ̃` and `κ_TB = E[μ̃²] / E[μ̃]`. -/
 theorem congestion_FSF_lt_TB (hlam : 0 < lam) (hγ : 0 < γ) {F : Measure ℝ}
-    [IsProbabilityMeasure F] {μmin μmax : ℝ} (hF : RateBounds F μmin μmax)
+    [IsProbabilityMeasure F] {lo hi : ℝ} (hF : RateBounds F lo hi)
     (hnd : 0 < varRate F) (b : ℝ) :
-    congestion lam γ μmin b < congestion lam γ (kappaTB F) b := by
+    congestion lam γ (kappaFSF F) b < congestion lam γ (kappaTB F) b := by
+  sorry
+
+/-- **Corollary 6.3.7, degenerate case.** If `F` is degenerate, the two
+stationary congestion measures are equal. -/
+theorem congestion_FSF_eq_TB_of_degenerate {F : Measure ℝ} [IsProbabilityMeasure F]
+    {lo hi : ℝ} (hF : RateBounds F lo hi) (hd : varRate F = 0) (lam γ b : ℝ) :
+    congestion lam γ (kappaFSF F) b = congestion lam γ (kappaTB F) b := by
   sorry
 
 end ThesisLean.CostOfFairness
