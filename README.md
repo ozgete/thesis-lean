@@ -9,11 +9,19 @@ Lean 4 / Mathlib formalisation of selected results from the PhD thesis
 **Stage 3 of 4: proofs in progress.** All definitions and theorem statements
 below compile against Mathlib.
 
-| Part | Proofs |
-| --- | --- |
-| Chapter 5 comparison layer | complete |
-| Lemma 2.4.3 | `sorry` |
-| Chapter 6 chain | `sorry` |
+| Part | File | Proofs |
+| --- | --- | --- |
+| Lemma 2.4.3 | `Preliminaries/Gronwall.lean` | complete |
+| Chapter 5 comparison layer | `Chapter5/Comparison.lean` | complete |
+| Section 6.2, fairness coefficients | `Chapter6/Coefficients.lean` | complete |
+| Section 6.3.1, density and moments | `Chapter6/Density.lean` | `sorry` |
+| Sections 6.3.2 and 6.3.3, Gaussian representation | `Chapter6/Gaussian.lean` | `sorry` |
+| Section 6.3.4, monotonicity | `Chapter6/Monotonicity.lean` | `sorry` |
+| Section 6.4.1, target slack | `Chapter6/Staffing.lean` | `sorry` |
+
+`ThesisLean/Audit.lean` runs `#print axioms` on every completed result. The
+build log shows that each of them depends only on the standard axioms
+`propext`, `Classical.choice` and `Quot.sound`, and on no `sorry`.
 
 ## Scope
 
