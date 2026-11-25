@@ -15,7 +15,7 @@ import Mathlib.Analysis.Calculus.MeanValue
 import Mathlib.Algebra.Order.Group.PosPart
 import Mathlib.MeasureTheory.Integral.Bochner.Basic
 import Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
-import Mathlib.MeasureTheory.Measure.Dirac
+import Mathlib.MeasureTheory.Measure.Dirac.Basic
 import Mathlib.MeasureTheory.Measure.Typeclasses.Probability
 
 open MeasureTheory Set
