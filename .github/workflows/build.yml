@@ -1,0 +1,25 @@
+name: build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          use-mathlib-cache: true
+          build-args: "--log-level=info"
+      - name: Report remaining sorry
+        if: always()
+        run: |
+          echo "Occurrences of sorry in ThesisLean/:"
+          grep -rn --include='*.lean' -w 'sorry' ThesisLean || echo "none"
