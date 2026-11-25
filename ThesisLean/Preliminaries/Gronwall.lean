@@ -43,6 +43,7 @@ theorem gronwall_integral {g : ℝ → ℝ} {T ε M C : ℝ} (hε : 0 ≤ ε) (h
   have hgt_int : ∀ a b : ℝ, IntervalIntegrable gt volume a b := fun a b =>
     (intervalIntegrable_const (c := max C 0)).mono_fun' hgt_meas.aestronglyMeasurable
       (Filter.Eventually.of_forall fun s => by
+        show ‖gt s‖ ≤ max C 0
         rw [Real.norm_eq_abs, abs_of_nonneg (hgt_nonneg s)]
         exact hgt_le s)
   have hint_eq : ∀ r ∈ Icc (0 : ℝ) T,
